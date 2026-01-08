@@ -1,99 +1,112 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Munich Popcorn</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5faff;
-            color: #005BBB; /* Bayerisch Blau */
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background: linear-gradient(90deg, white 40%, #005BBB 40%);
-            padding: 30px 0;
-            font-size: 2.5em;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-        .popcorn-tüte {
-            margin: 40px auto;
-            width: 150px;
-            height: 200px;
-            background: repeating-linear-gradient(
-                90deg,
-                white,
-                white 20px,
-                #005BBB 20px,
-                #005BBB 40px
-            );
-            border-radius: 15px 15px 50px 50px;
-            position: relative;
-        }
-        .popcorn-körner {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .popcorn-korn {
-            width: 30px;
-            height: 30px;
-            background: #fff8dc;
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 5px;
-            box-shadow: 0 0 5px #f0e68c;
-        }
-        main {
-            max-width: 600px;
-            margin: 0 auto 50px;
-            padding: 0 20px;
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-        button {
-            background-color: #005BBB;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-        }
-        button:hover {
-            background-color: #003d7a;
-        }
-        footer {
-            color: #777;
-            font-size: 0.9em;
-            margin-bottom: 20px;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Munich Popcorn</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5faff;
+    overflow-x: hidden;
+  }
+
+  /* Popcorntüte obere Hälfte */
+  .popcorn-bag {
+    position: relative;
+    height: 50vh; /* obere Hälfte der Seite */
+    background: repeating-linear-gradient(
+      90deg,
+      #ff0000 0,
+      #ff0000 20px,
+      white 20px,
+      white 40px
+    );
+    clip-path: polygon(
+      0 0, 
+      100% 0, 
+      100% 85%, 
+      95% 100%, 90% 85%, 85% 100%, 80% 85%, 
+      75% 100%, 70% 85%, 65% 100%, 60% 85%, 
+      55% 100%, 50% 85%, 45% 100%, 40% 85%, 
+      35% 100%, 30% 85%, 25% 100%, 20% 85%, 
+      15% 100%, 10% 85%, 5% 100%, 0 85%
+    );
+    box-sizing: border-box;
+  }
+
+  /* Popcorn-Körner, die herausfallen */
+  .popcorn-korn {
+    position: absolute;
+    background: #fff8dc;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #f0e68c;
+    animation: floatDown 5s infinite ease-in-out;
+  }
+
+  /* Verschiedene Positionen für Popcorn-Körner */
+  .popcorn1 { top: 45vh; left: 20%; animation-delay: 0s; }
+  .popcorn2 { top: 48vh; left: 35%; animation-delay: 1.5s; }
+  .popcorn3 { top: 46vh; left: 50%; animation-delay: 3s; }
+  .popcorn4 { top: 47vh; left: 65%; animation-delay: 4.5s; }
+  .popcorn5 { top: 49vh; left: 80%; animation-delay: 2s; }
+
+  /* Animation für leichtes Schweben/Fallen */
+  @keyframes floatDown {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(15px); opacity: 0.7; }
+  }
+
+  /* Restlicher Seiteninhalt */
+  main {
+    padding: 20px;
+    max-width: 600px;
+    margin: -30px auto 50px; /* negativ, damit Inhalt etwas über Popcorntüte ragt */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    color: #005BBB;
+    text-align: center;
+  }
+
+  button {
+    background-color: #005BBB;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  button:hover {
+    background-color: #003d7a;
+  }
+
+</style>
 </head>
 <body>
-    <header>Munich Popcorn</header>
-    <div class="popcorn-tüte">
-        <div class="popcorn-körner">
-            <span class="popcorn-korn"></span>
-            <span class="popcorn-korn"></span>
-            <span class="popcorn-korn"></span>
-            <span class="popcorn-korn"></span>
-            <span class="popcorn-korn"></span>
-        </div>
-    </div>
-    <main>
-        <h1>Bio-Popcorn aus München</h1>
-        <p>Leckeres, gesundes und nachhaltiges Popcorn, inspiriert von der bayerischen Tradition. Unser Munich Popcorn bietet den perfekten Knabberspaß – bio, frisch und mit Liebe gemacht.</p>
-        <p>Wir suchen Investoren, die mit uns gemeinsam wachsen und den Popcorn-Markt erobern möchten.</p>
-        <button onclick="alert('Danke für dein Interesse! Kontaktiere uns unter info@munichpopcorn.de')">Kontakt aufnehmen</button>
-    </main>
-    <footer>© 2026 Munich Popcorn</footer>
+  <div class="popcorn-bag"></div>
+
+  <!-- Popcorn-Körner -->
+  <span class="popcorn-korn popcorn1"></span>
+  <span class="popcorn-korn popcorn2"></span>
+  <span class="popcorn-korn popcorn3"></span>
+  <span class="popcorn-korn popcorn4"></span>
+  <span class="popcorn-korn popcorn5"></span>
+
+  <main>
+    <h1>Munich Popcorn</h1>
+    <h2>Bio-Popcorn aus München</h2>
+    <p>Leckeres, gesundes und nachhaltiges Popcorn, inspiriert von der bayerischen Tradition. Unser Munich Popcorn bietet den perfekten Knabberspaß – bio, frisch und mit Liebe gemacht.</p>
+    <p>Wir suchen Investoren, die mit uns gemeinsam wachsen und den Popcorn-Markt erobern möchten.</p>
+    <button onclick="alert('Danke für dein Interesse! Kontaktiere uns unter info@munichpopcorn.de')">Kontakt aufnehmen</button>
+  </main>
 </body>
 </html>
